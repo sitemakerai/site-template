@@ -18,20 +18,20 @@
  */
 
 :root {
-  /* Primary Brand Color - Blue */
-  --color-primary: #3b82f6;
-  --color-primary-dark: #2563eb;
+  /* Primary Brand Color - Yellow */
+  --color-primary: #facc15;
+  --color-primary-dark: #eab308;
   
-  /* Secondary Color - Slate */
-  --color-secondary: #64748b;
+  /* Secondary Color - Black */
+  --color-secondary: #000000;
   
-  /* Accent Color - Amber */
-  --color-accent: #f59e0b;
+  /* Accent Color - Bright Yellow */
+  --color-accent: #fde047;
   
   /* Background & Text */
-  --color-background: #ffffff;
-  --color-foreground: #1e293b;
-  --color-muted: #64748b;
+  --color-background: #fef3c7;
+  --color-foreground: #000000;
+  --color-muted: #374151;
 }
 
 /* Dark mode (optional - uncomment to enable) */
@@ -64,3 +64,4 @@ html {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
+

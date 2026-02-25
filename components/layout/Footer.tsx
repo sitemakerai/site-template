@@ -1,124 +1,118 @@
 import Link from "next/link";
-import { Container } from "@/components/ui/Container";
-import { Github, Twitter, Linkedin } from "lucide-react";
+import { Clock, MapPin, Phone, Mail } from "lucide-react";
 
 export function Footer() {
   const footerLinks = {
-    product: [
-      { name: "Features", href: "#" },
-      { name: "Pricing", href: "/pricing" },
-      { name: "FAQ", href: "#" },
+    boutique: [
+      { name: "Collections", href: "/collections" },
+      { name: "Marques", href: "/collections" },
+      { name: "Nouveautés", href: "/collections" },
     ],
-    company: [
-      { name: "About", href: "/about" },
-      { name: "Blog", href: "#" },
-      { name: "Careers", href: "#" },
+    services: [
+      { name: "Révision & Entretien", href: "/services" },
+      { name: "Restauration", href: "/services" },
+      { name: "Expertise", href: "/services" },
     ],
-    legal: [
-      { name: "Privacy", href: "#" },
-      { name: "Terms", href: "#" },
+    maison: [
+      { name: "Notre Histoire", href: "/about" },
+      { name: "L'Atelier", href: "/about" },
       { name: "Contact", href: "/contact" },
     ],
   };
 
-  const socialLinks = [
-    { name: "Twitter", icon: Twitter, href: "#" },
-    { name: "LinkedIn", icon: Linkedin, href: "#" },
-    { name: "GitHub", icon: Github, href: "#" },
-  ];
-
   return (
-    <footer className="bg-secondary-50 border-t border-secondary-200">
-      <Container>
-        <div className="py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-            {/* Brand */}
-            <div className="col-span-2 md:col-span-1">
-              <Link href="/" className="text-2xl font-bold text-primary-600 mb-4 inline-block">
-                Brand
-              </Link>
-              <p className="text-secondary-600 text-sm">
-                Building beautiful experiences for the modern web.
-              </p>
-            </div>
+    <footer className="bg-secondary-950 border-t border-primary-700/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
 
-            {/* Product Links */}
-            <div>
-              <h3 className="font-semibold text-secondary-900 mb-4">Product</h3>
-              <ul className="space-y-3">
-                {footerLinks.product.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-secondary-600 hover:text-primary-600 text-sm transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Company Links */}
-            <div>
-              <h3 className="font-semibold text-secondary-900 mb-4">Company</h3>
-              <ul className="space-y-3">
-                {footerLinks.company.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-secondary-600 hover:text-primary-600 text-sm transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Legal Links */}
-            <div>
-              <h3 className="font-semibold text-secondary-900 mb-4">Legal</h3>
-              <ul className="space-y-3">
-                {footerLinks.legal.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-secondary-600 hover:text-primary-600 text-sm transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Brand */}
+          <div className="lg:col-span-2">
+            <Link href="/" className="flex items-center gap-3 mb-5">
+              <div className="w-8 h-8 rounded-full border border-primary-500 flex items-center justify-center">
+                <Clock className="w-4 h-4 text-primary-400" />
+              </div>
+              <div className="flex flex-col leading-tight">
+                <span className="font-serif text-base font-bold text-white">Centre Horloger</span>
+                <span className="text-[10px] uppercase tracking-[0.2em] text-primary-400">Genève · Est. 1887</span>
+              </div>
+            </Link>
+            <p className="text-secondary-400 text-sm leading-relaxed mb-6 max-w-xs">
+              Maîtres horlogers depuis cinq générations, nous perpétuons l'excellence de l'horlogerie suisse au cœur de Genève.
+            </p>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-2 text-secondary-400 text-sm">
+                <MapPin className="w-4 h-4 text-primary-500 mt-0.5 shrink-0" />
+                <span>12, Rue du Rhône, 1204 Genève</span>
+              </li>
+              <li className="flex items-center gap-2 text-secondary-400 text-sm">
+                <Phone className="w-4 h-4 text-primary-500 shrink-0" />
+                <span>+41 22 310 45 67</span>
+              </li>
+              <li className="flex items-center gap-2 text-secondary-400 text-sm">
+                <Mail className="w-4 h-4 text-primary-500 shrink-0" />
+                <span>contact@centrehorloger.ch</span>
+              </li>
+            </ul>
           </div>
 
-          {/* Bottom Bar */}
-          <div className="pt-8 border-t border-secondary-200 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-secondary-600 text-sm">
-              © {new Date().getFullYear()} Brand. All rights reserved.
-            </p>
-            
-            {/* Social Links */}
-            <div className="flex space-x-6">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    className="text-secondary-600 hover:text-primary-600 transition-colors"
-                    aria-label={social.name}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </a>
-                );
-              })}
-            </div>
+          {/* Boutique */}
+          <div>
+            <h3 className="text-xs uppercase tracking-widest text-primary-400 mb-5 font-sans">Boutique</h3>
+            <ul className="space-y-3">
+              {footerLinks.boutique.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-secondary-400 hover:text-primary-300 text-sm transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="text-xs uppercase tracking-widest text-primary-400 mb-5 font-sans">Services</h3>
+            <ul className="space-y-3">
+              {footerLinks.services.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-secondary-400 hover:text-primary-300 text-sm transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* La Maison */}
+          <div>
+            <h3 className="text-xs uppercase tracking-widest text-primary-400 mb-5 font-sans">La Maison</h3>
+            <ul className="space-y-3">
+              {footerLinks.maison.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-secondary-400 hover:text-primary-300 text-sm transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      </Container>
+
+        {/* Bottom bar */}
+        <div className="pt-8 border-t border-secondary-800 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-secondary-500 text-xs tracking-wide">
+            © {new Date().getFullYear()} Centre Horloger SA — Tous droits réservés
+          </p>
+          <div className="flex gap-6">
+            <Link href="#" className="text-secondary-500 hover:text-primary-400 text-xs transition-colors">
+              Confidentialité
+            </Link>
+            <Link href="#" className="text-secondary-500 hover:text-primary-400 text-xs transition-colors">
+              Mentions légales
+            </Link>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }

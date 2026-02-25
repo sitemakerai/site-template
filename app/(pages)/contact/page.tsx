@@ -1,299 +1,242 @@
 "use client";
 
-import { Container } from "@/components/ui/Container";
-import { Card } from "@/components/ui/Card";
-import { Input } from "@/components/ui/Input";
-import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Clock, Send, HelpCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { Input } from "@/components/ui/Input";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
+  visible: { opacity: 1, y: 0 },
 };
 
-const staggerContainer = {
+const stagger = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15
-    }
-  }
+  visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
 };
 
 const faqs = [
   {
-    question: "What services do you offer?",
-    answer: "We provide comprehensive digital solutions including web development, mobile apps, UI/UX design, and strategic consulting."
+    question: "Combien coûte une révision complète ?",
+    answer:
+      "Le tarif dépend du calibre, de la marque et de l'état de la montre. Comptez en général entre CHF 250 et CHF 800. Un devis gratuit vous est remis après examen.",
   },
   {
-    question: "How long does a typical project take?",
-    answer: "Project timelines vary based on scope and complexity. Most projects range from 4-12 weeks from kickoff to launch."
+    question: "Quel est le délai pour une révision ?",
+    answer:
+      "Pour une révision standard, comptez 3 à 6 semaines. La restauration d'une pièce de collection peut nécessiter davantage de temps selon la disponibilité des pièces.",
   },
   {
-    question: "Do you offer ongoing support?",
-    answer: "Yes! We provide maintenance packages and ongoing support to ensure your digital products continue to perform optimally."
+    question: "Acceptez-vous toutes les marques ?",
+    answer:
+      "Oui, nous intervenons sur l'ensemble des grandes manufactures suisses (Rolex, Patek Philippe, AP, IWC, Jaeger-LeCoultre, etc.) ainsi que les montres vintage.",
   },
   {
-    question: "What's your pricing model?",
-    answer: "We offer flexible pricing based on project scope. Contact us for a custom quote tailored to your specific needs."
-  }
+    question: "Proposez-vous un service d'expertise pour assurance ?",
+    answer:
+      "Absolument. Nous établissons des certificats d'authenticité et d'estimation reconnus par les compagnies d'assurance, sur rendez-vous.",
+  },
 ];
 
 export default function ContactPage() {
   return (
-    <div className="py-24">
-      <Container>
-        {/* Header */}
-        <motion.div 
-          className="text-center mb-16"
-          initial="hidden"
-          animate="visible"
-          variants={fadeInUp}
-          transition={{ duration: 0.6 }}
-        >
-          <Badge className="mb-4">Contact Us</Badge>
-          <h1 className="text-5xl md:text-6xl font-bold text-secondary-900 mb-6">
-            Get In Touch
-          </h1>
-          <p className="text-xl text-secondary-600 max-w-2xl mx-auto">
-            Have a question or want to work together? We'd love to hear from you. 
-            Drop us a message and we'll respond as soon as possible.
-          </p>
-        </motion.div>
-
-        {/* Contact Form and Info */}
-        <motion.div
-          className="grid lg:grid-cols-2 gap-12 mb-32"
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-        >
-          {/* Contact Form */}
-          <motion.div variants={fadeInUp}>
-            <Card className="p-8 lg:p-10">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
-                  <Send className="w-5 h-5 text-primary-600" />
-                </div>
-                <h2 className="text-2xl font-bold text-secondary-900">Send us a message</h2>
-              </div>
-              
-              <form className="space-y-5">
-                <div>
-                  <label className="block text-sm font-semibold text-secondary-700 mb-2">
-                    Full Name
-                  </label>
-                  <Input 
-                    type="text" 
-                    placeholder="John Doe" 
-                    className="transition-all focus:scale-[1.01]"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-semibold text-secondary-700 mb-2">
-                    Email Address
-                  </label>
-                  <Input 
-                    type="email" 
-                    placeholder="john@example.com"
-                    className="transition-all focus:scale-[1.01]"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-semibold text-secondary-700 mb-2">
-                    Phone Number (Optional)
-                  </label>
-                  <Input 
-                    type="tel" 
-                    placeholder="+1 (555) 000-0000"
-                    className="transition-all focus:scale-[1.01]"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-semibold text-secondary-700 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    className="w-full px-4 py-3 rounded-lg border border-secondary-300 bg-white text-secondary-900 placeholder:text-secondary-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none focus:scale-[1.01]"
-                    rows={6}
-                    placeholder="Tell us about your project, goals, and timeline..."
-                  />
-                </div>
-                
-                <Button 
-                  className="w-full group"
-                  type="button"
-                >
-                  <span className="flex items-center justify-center gap-2">
-                    Send Message
-                    <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </Button>
-                
-                <p className="text-sm text-secondary-500 text-center">
-                  We typically respond within 24 hours during business days
-                </p>
-              </form>
-            </Card>
-          </motion.div>
-
-          {/* Contact Information */}
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <Card className="p-8">
-              <h2 className="text-2xl font-bold text-secondary-900 mb-6">
-                Contact Information
-              </h2>
-              <div className="space-y-6">
-                <motion.div 
-                  className="flex items-start gap-4"
-                  whileHover={{ x: 4 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-primary-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-secondary-900 mb-1">Email</h3>
-                    <a 
-                      href="mailto:hello@example.com" 
-                      className="text-primary-600 hover:text-primary-700 transition-colors"
-                    >
-                      hello@example.com
-                    </a>
-                    <p className="text-sm text-secondary-500 mt-1">
-                      For general inquiries
-                    </p>
-                  </div>
-                </motion.div>
-                
-                <motion.div 
-                  className="flex items-start gap-4"
-                  whileHover={{ x: 4 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-primary-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-secondary-900 mb-1">Phone</h3>
-                    <a 
-                      href="tel:+15551234567" 
-                      className="text-primary-600 hover:text-primary-700 transition-colors"
-                    >
-                      +1 (555) 123-4567
-                    </a>
-                    <p className="text-sm text-secondary-500 mt-1">
-                      Mon-Fri, 9AM-6PM PST
-                    </p>
-                  </div>
-                </motion.div>
-                
-                <motion.div 
-                  className="flex items-start gap-4"
-                  whileHover={{ x: 4 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-primary-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-secondary-900 mb-1">Office</h3>
-                    <p className="text-secondary-600">
-                      123 Business Street<br />
-                      Suite 400<br />
-                      San Francisco, CA 94102
-                    </p>
-                  </div>
-                </motion.div>
-              </div>
-            </Card>
-
-            <Card className="p-6 bg-gradient-to-br from-primary-50 to-blue-50 border-primary-200">
-              <div className="flex items-start gap-3 mb-4">
-                <Clock className="w-5 h-5 text-primary-600 mt-1" />
-                <div>
-                  <h3 className="font-semibold text-secondary-900 mb-3">Office Hours</h3>
-                  <div className="space-y-2 text-sm text-secondary-700">
-                    <div className="flex justify-between">
-                      <span className="font-medium">Monday - Friday</span>
-                      <span>9:00 AM - 6:00 PM</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="font-medium">Saturday</span>
-                      <span>10:00 AM - 4:00 PM</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="font-medium">Sunday</span>
-                      <span className="text-secondary-500">Closed</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-4 pt-4 border-t border-primary-200">
-                <p className="text-sm text-secondary-600">
-                  <strong>Note:</strong> Emergency support available 24/7 for active projects
-                </p>
-              </div>
-            </Card>
-          </motion.div>
-        </motion.div>
-
-        {/* FAQ Section */}
-        <motion.div
-          className="max-w-4xl mx-auto"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-3 mb-4">
-              <HelpCircle className="w-8 h-8 text-primary-600" />
-              <h2 className="text-4xl font-bold text-secondary-900">
-                Frequently Asked Questions
-              </h2>
-            </div>
-            <p className="text-lg text-secondary-600">
-              Quick answers to common questions
+    <div className="bg-secondary-950 min-h-screen">
+      {/* Header */}
+      <section className="py-24 border-b border-secondary-800">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
+            transition={{ duration: 0.7 }}
+          >
+            <p className="text-xs uppercase tracking-[0.3em] text-primary-400 mb-6 font-sans">
+              Nous Contacter
             </p>
-          </div>
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <div className="h-px w-12 bg-primary-600/50" />
+              <div className="w-1 h-1 rounded-full bg-primary-500" />
+              <div className="h-px w-12 bg-primary-600/50" />
+            </div>
+            <h1 className="font-serif text-5xl md:text-6xl text-white font-bold mb-6">
+              Prenez Rendez-vous
+            </h1>
+            <p className="text-secondary-400 text-lg max-w-xl mx-auto leading-relaxed font-sans">
+              Notre atelier vous accueille du lundi au samedi. Apportez votre montre ou
+              décrivez-nous votre besoin — nous vous répondrons sous 24 heures.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <motion.div key={index} variants={fadeInUp}>
-                <Card className="p-6 hover:shadow-lg transition-all">
-                  <h3 className="text-lg font-semibold text-secondary-900 mb-3">
-                    {faq.question}
-                  </h3>
-                  <p className="text-secondary-600 leading-relaxed">
-                    {faq.answer}
+      {/* Form + Info */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={stagger}
+            className="grid lg:grid-cols-2 gap-12"
+          >
+            {/* Form */}
+            <motion.div variants={fadeInUp}>
+              <div className="border border-secondary-800 p-10 bg-secondary-900/50">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-8 h-8 border border-primary-600/50 flex items-center justify-center">
+                    <Send className="w-4 h-4 text-primary-500" />
+                  </div>
+                  <h2 className="font-serif text-2xl text-white font-semibold">Envoyer un message</h2>
+                </div>
+                <form className="space-y-5">
+                  <div>
+                    <label className="block text-xs uppercase tracking-widest text-secondary-400 mb-2 font-sans">
+                      Nom complet
+                    </label>
+                    <Input type="text" placeholder="Jean Dupont" />
+                  </div>
+                  <div>
+                    <label className="block text-xs uppercase tracking-widest text-secondary-400 mb-2 font-sans">
+                      Adresse e-mail
+                    </label>
+                    <Input type="email" placeholder="jean@exemple.ch" />
+                  </div>
+                  <div>
+                    <label className="block text-xs uppercase tracking-widest text-secondary-400 mb-2 font-sans">
+                      Téléphone (optionnel)
+                    </label>
+                    <Input type="tel" placeholder="+41 79 000 00 00" />
+                  </div>
+                  <div>
+                    <label className="block text-xs uppercase tracking-widest text-secondary-400 mb-2 font-sans">
+                      Votre montre & demande
+                    </label>
+                    <textarea
+                      className="w-full px-4 py-3 border border-secondary-700 bg-secondary-900 text-white placeholder:text-secondary-600 focus:outline-none focus:border-primary-500 transition-colors resize-none font-sans text-sm"
+                      rows={5}
+                      placeholder="Décrivez votre montre (marque, référence, année) et votre besoin..."
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    className="w-full px-6 py-4 bg-primary-600 text-white text-sm uppercase tracking-widest hover:bg-primary-500 transition-colors font-sans"
+                  >
+                    Envoyer le message
+                  </button>
+                  <p className="text-xs text-secondary-600 text-center font-sans">
+                    Réponse garantie sous 24 heures ouvrables
                   </p>
-                </Card>
+                </form>
+              </div>
+            </motion.div>
+
+            {/* Info */}
+            <motion.div variants={fadeInUp} className="space-y-6">
+              <div className="border border-secondary-800 p-8 bg-secondary-900/50">
+                <h2 className="font-serif text-xl text-white font-semibold mb-6">Informations pratiques</h2>
+                <div className="space-y-6">
+                  {[
+                    {
+                      icon: MapPin,
+                      label: "Adresse",
+                      value: "12, Rue du Rhône\n1204 Genève, Suisse",
+                      href: undefined,
+                    },
+                    {
+                      icon: Phone,
+                      label: "Téléphone",
+                      value: "+41 22 310 45 67",
+                      href: "tel:+41223104567",
+                    },
+                    {
+                      icon: Mail,
+                      label: "E-mail",
+                      value: "contact@centrehorloger.ch",
+                      href: "mailto:contact@centrehorloger.ch",
+                    },
+                  ].map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <div key={item.label} className="flex items-start gap-4">
+                        <div className="w-9 h-9 border border-primary-600/40 flex items-center justify-center shrink-0">
+                          <Icon className="w-4 h-4 text-primary-500" />
+                        </div>
+                        <div>
+                          <p className="text-xs uppercase tracking-widest text-secondary-500 mb-1 font-sans">
+                            {item.label}
+                          </p>
+                          {item.href ? (
+                            <a
+                              href={item.href}
+                              className="text-secondary-200 hover:text-primary-300 transition-colors text-sm font-sans"
+                            >
+                              {item.value}
+                            </a>
+                          ) : (
+                            <p className="text-secondary-200 text-sm font-sans whitespace-pre-line">
+                              {item.value}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="border border-primary-700/30 p-8 bg-primary-900/10">
+                <div className="flex items-center gap-3 mb-5">
+                  <Clock className="w-5 h-5 text-primary-400" />
+                  <h3 className="font-serif text-lg text-white font-semibold">Horaires d&apos;ouverture</h3>
+                </div>
+                <div className="space-y-3 font-sans">
+                  {[
+                    { day: "Lundi – Vendredi", hours: "9h00 – 18h30" },
+                    { day: "Samedi", hours: "10h00 – 17h00" },
+                    { day: "Dimanche", hours: "Fermé" },
+                  ].map((row) => (
+                    <div key={row.day} className="flex justify-between text-sm">
+                      <span className="text-secondary-400">{row.day}</span>
+                      <span className={row.hours === "Fermé" ? "text-secondary-600" : "text-secondary-200"}>
+                        {row.hours}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-5 pt-5 border-t border-secondary-800 text-xs text-secondary-500 font-sans">
+                  Consultation initiale gratuite. Devis sans engagement.
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-secondary-900 border-t border-secondary-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <p className="text-xs uppercase tracking-[0.3em] text-primary-400 mb-4 font-sans">FAQ</p>
+            <h2 className="font-serif text-3xl text-white font-bold">Questions fréquentes</h2>
+          </div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="space-y-px"
+          >
+            {faqs.map((faq) => (
+              <motion.div
+                key={faq.question}
+                variants={fadeInUp}
+                className="bg-secondary-950 border border-secondary-800 p-8 hover:border-primary-700/50 transition-colors"
+              >
+                <h3 className="font-serif text-lg text-white font-semibold mb-3">{faq.question}</h3>
+                <p className="text-secondary-400 text-sm leading-relaxed font-sans">{faq.answer}</p>
               </motion.div>
             ))}
-          </div>
-
-          <motion.div 
-            className="mt-12 text-center"
-            variants={fadeInUp}
-          >
-            <Card className="p-8 bg-gradient-to-br from-secondary-50 to-secondary-100 border-secondary-200">
-              <p className="text-secondary-700 mb-4">
-                Can't find what you're looking for?
-              </p>
-              <Button variant="outline" size="lg">
-                View Full FAQ
-              </Button>
-            </Card>
           </motion.div>
-        </motion.div>
-      </Container>
+        </div>
+      </section>
     </div>
   );
 }

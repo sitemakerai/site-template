@@ -1,203 +1,209 @@
 "use client";
 
-import { Container } from "@/components/ui/Container";
-import { Card } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
 import { motion } from "framer-motion";
-import { 
-  Lightbulb, 
-  Target, 
-  Users, 
-  Sparkles,
-  Heart,
-  Zap,
-  User,
-  Briefcase,
-  Code
-} from "lucide-react";
+import { Clock, Wrench, Award, Users } from "lucide-react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
+  visible: { opacity: 1, y: 0 },
 };
 
-const staggerContainer = {
+const stagger = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
+  visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
 };
+
+const team = [
+  {
+    name: "Henri Meylan",
+    role: "Maître Horloger, 5e génération",
+    icon: Clock,
+    bio: "Formé à l'École d'Horlogerie de Genève, Henri perpétue le savoir-faire familial transmis depuis 1887. Spécialiste des montres à complications.",
+  },
+  {
+    name: "Isabelle Favre",
+    role: "Restauratrice & Experte",
+    icon: Wrench,
+    bio: "Diplômée du WOSTEP avec 18 ans d'expérience. Isabelle est reconnue pour la restauration de montres de poche anciennes et de garde-temps de collection.",
+  },
+  {
+    name: "Marc-Antoine Perret",
+    role: "Conseiller en Acquisition",
+    icon: Award,
+    bio: "Ancien commissaire-priseur spécialisé en horlogerie, il accompagne nos clients dans l'acquisition et la valorisation de leur patrimoine horloger.",
+  },
+];
+
+const values = [
+  {
+    icon: Clock,
+    title: "Patience & Précision",
+    description:
+      "L'horlogerie exige une patience absolue. Chaque geste est posé avec soin, chaque réglage vérifié et revérifié avant de restituer un garde-temps.",
+  },
+  {
+    icon: Award,
+    title: "Authenticité",
+    description:
+      "Nous n'utilisons que des pièces d'origine. La valeur d'une montre réside dans son intégrité — nous la préservons à chaque intervention.",
+  },
+  {
+    icon: Wrench,
+    title: "Savoir-Faire Ancestral",
+    description:
+      "Cinq générations de transmission orale et gestuelle. Un art que ni les machines ni l'intelligence artificielle ne peuvent reproduire.",
+  },
+  {
+    icon: Users,
+    title: "Relation de Confiance",
+    description:
+      "Vos montres sont souvent des héritages. Nous les traitons avec le respect qu'elles méritent et une transparence totale sur chaque intervention.",
+  },
+];
 
 export default function AboutPage() {
   return (
-    <div className="py-24">
-      {/* Hero Section */}
-      <Container>
-        <motion.div 
-          className="max-w-4xl mx-auto text-center mb-24"
-          initial="hidden"
-          animate="visible"
-          variants={fadeInUp}
-          transition={{ duration: 0.6 }}
-        >
-          <Badge className="mb-6">About Us</Badge>
-          <h1 className="text-5xl md:text-6xl font-bold text-secondary-900 mb-6">
-            Building the future, <br />
-            <span className="text-primary-600">one project at a time</span>
-          </h1>
-          <p className="text-xl text-secondary-600 max-w-2xl mx-auto">
-            We're a team of passionate individuals dedicated to creating exceptional 
-            digital experiences that make a lasting impact.
-          </p>
-        </motion.div>
-
-        {/* Mission Statement */}
-        <motion.div
-          className="max-w-3xl mx-auto mb-32"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeInUp}
-          transition={{ duration: 0.6 }}
-        >
-          <Card className="p-12 bg-gradient-to-br from-primary-50 to-blue-50 border-primary-100">
-            <div className="flex items-start gap-4 mb-4">
-              <div className="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                <Target className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-secondary-900 mb-4">Our Mission</h2>
-                <p className="text-lg text-secondary-700 leading-relaxed">
-                  Founded in 2024, we set out with a simple yet ambitious mission: to make 
-                  technology accessible, beautiful, and meaningful for everyone. What started 
-                  as a small team of three dreamers has grown into a diverse collective of 
-                  talented designers, developers, and strategists united by a common vision.
-                </p>
-              </div>
+    <div className="bg-secondary-950 min-h-screen">
+      {/* Hero */}
+      <section className="py-28 border-b border-secondary-800">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
+            transition={{ duration: 0.7 }}
+          >
+            <p className="text-xs uppercase tracking-[0.3em] text-primary-400 mb-6 font-sans">
+              Notre Histoire
+            </p>
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <div className="h-px w-12 bg-primary-600/50" />
+              <div className="w-1 h-1 rounded-full bg-primary-500" />
+              <div className="h-px w-12 bg-primary-600/50" />
             </div>
-          </Card>
-        </motion.div>
-
-        {/* Team Section */}
-        <motion.div
-          className="mb-32"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-secondary-900 mb-4">Meet the Team</h2>
-            <p className="text-xl text-secondary-600">
-              The talented people behind our success
+            <h1 className="font-serif text-5xl md:text-6xl text-white font-bold mb-8 leading-tight">
+              Cinq générations au service
+              <br />
+              <em className="text-primary-400 not-italic">de l&apos;excellence horlogère</em>
+            </h1>
+            <p className="text-secondary-400 text-lg max-w-2xl mx-auto leading-relaxed font-sans">
+              Fondé en 1887 par Gustave Meylan, Centre Horloger est aujourd'hui dirigé par
+              Henri Meylan, son arrière-arrière-petit-fils. La même passion, les mêmes valeurs,
+              au cœur de Genève.
             </p>
-          </div>
+          </motion.div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-3 gap-8">
+      {/* Timeline */}
+      <section className="py-24 bg-secondary-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <p className="text-xs uppercase tracking-[0.3em] text-primary-400 mb-4 font-sans">Chronologie</p>
+            <h2 className="font-serif text-3xl text-white font-bold">137 ans d&apos;histoire</h2>
+          </div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="space-y-0"
+          >
             {[
-              {
-                name: "Sarah Chen",
-                role: "Founder & CEO",
-                icon: User,
-                bio: "Visionary leader with 10+ years of experience in tech innovation. Passionate about building products that matter."
-              },
-              {
-                name: "Marcus Rodriguez",
-                role: "Head of Design",
-                icon: Briefcase,
-                bio: "Award-winning designer focused on creating beautiful, intuitive user experiences that delight and inspire."
-              },
-              {
-                name: "Alex Kim",
-                role: "Lead Developer",
-                icon: Code,
-                bio: "Full-stack engineer who loves solving complex problems with elegant, scalable solutions."
-              }
-            ].map((member, index) => (
-              <motion.div key={index} variants={fadeInUp}>
-                <Card className="p-8 text-center hover:shadow-xl transition-shadow">
-                  <div className="w-24 h-24 bg-gradient-to-br from-primary-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <member.icon className="w-12 h-12 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-secondary-900 mb-2">
-                    {member.name}
-                  </h3>
-                  <p className="text-primary-600 font-semibold mb-4">{member.role}</p>
-                  <p className="text-secondary-600 leading-relaxed">{member.bio}</p>
-                </Card>
+              { year: "1887", event: "Gustave Meylan ouvre sa première boutique Rue du Rhône." },
+              { year: "1923", event: "Louis Meylan développe l'atelier de restauration, spécialisé en complications." },
+              { year: "1961", event: "Pierre Meylan devient partenaire officiel de plusieurs grandes manufactures suisses." },
+              { year: "1998", event: "Jean-Philippe Meylan modernise l'atelier et introduit les équipements ultrasons." },
+              { year: "2015", event: "Henri Meylan prend la direction et lance le service d'expertise indépendante." },
+            ].map((item, index) => (
+              <motion.div
+                key={item.year}
+                variants={fadeInUp}
+                className="flex gap-8 items-start group"
+              >
+                <div className="flex flex-col items-center">
+                  <div className="w-px h-6 bg-primary-700/40" />
+                  <div className="w-2 h-2 rounded-full bg-primary-500 group-hover:bg-primary-300 transition-colors" />
+                  {index < 4 && <div className="w-px flex-1 min-h-[3rem] bg-primary-700/40" />}
+                </div>
+                <div className="pb-10">
+                  <span className="font-serif text-primary-400 text-xl font-bold">{item.year}</span>
+                  <p className="text-secondary-400 text-sm mt-1 leading-relaxed font-sans">{item.event}</p>
+                </div>
               </motion.div>
             ))}
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Values Section */}
-        <motion.div
-          className="max-w-5xl mx-auto"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
+      {/* Team */}
+      <section className="py-24 border-t border-secondary-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-secondary-900 mb-4">Our Values</h2>
-            <p className="text-xl text-secondary-600">
-              The principles that guide everything we do
-            </p>
+            <p className="text-xs uppercase tracking-[0.3em] text-primary-400 mb-4 font-sans">L&apos;Équipe</p>
+            <h2 className="font-serif text-4xl text-white font-bold">Nos Maîtres Artisans</h2>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Sparkles,
-                title: "Innovation",
-                description: "We constantly push boundaries and explore new possibilities, staying ahead of the curve in technology and design."
-              },
-              {
-                icon: Heart,
-                title: "Quality",
-                description: "Every detail matters. We craft experiences that stand the test of time, built with care and precision."
-              },
-              {
-                icon: Users,
-                title: "Collaboration",
-                description: "Great work happens when diverse perspectives come together. We believe in the power of teamwork."
-              },
-              {
-                icon: Lightbulb,
-                title: "Creativity",
-                description: "We embrace bold ideas and creative thinking, transforming imagination into reality through our work."
-              },
-              {
-                icon: Zap,
-                title: "Speed",
-                description: "We move fast without sacrificing quality, delivering results that exceed expectations on time."
-              },
-              {
-                icon: Target,
-                title: "Impact",
-                description: "We measure success by the positive change we create for our clients and their communities."
-              }
-            ].map((value, index) => (
-              <motion.div key={index} variants={fadeInUp}>
-                <Card className="p-8 h-full hover:shadow-xl transition-all hover:-translate-y-1">
-                  <div className="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
-                    <value.icon className="w-7 h-7 text-primary-600" />
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="grid md:grid-cols-3 gap-px bg-secondary-800"
+          >
+            {team.map((member) => {
+              const Icon = member.icon;
+              return (
+                <motion.div
+                  key={member.name}
+                  variants={fadeInUp}
+                  className="bg-secondary-950 p-10 text-center group hover:bg-secondary-900 transition-colors"
+                >
+                  <div className="w-16 h-16 rounded-full border border-primary-600/40 flex items-center justify-center mx-auto mb-6 group-hover:border-primary-400 transition-colors">
+                    <Icon className="w-7 h-7 text-primary-500" />
                   </div>
-                  <h3 className="text-xl font-bold text-secondary-900 mb-3">
-                    {value.title}
-                  </h3>
-                  <p className="text-secondary-600 leading-relaxed">
-                    {value.description}
-                  </p>
-                </Card>
-              </motion.div>
-            ))}
+                  <h3 className="font-serif text-xl text-white font-semibold mb-1">{member.name}</h3>
+                  <p className="text-primary-400 text-xs uppercase tracking-widest mb-4 font-sans">{member.role}</p>
+                  <p className="text-secondary-400 text-sm leading-relaxed font-sans">{member.bio}</p>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section className="py-24 bg-secondary-900 border-t border-secondary-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <p className="text-xs uppercase tracking-[0.3em] text-primary-400 mb-4 font-sans">Nos Valeurs</p>
+            <h2 className="font-serif text-4xl text-white font-bold">Ce qui nous guide</h2>
           </div>
-        </motion.div>
-      </Container>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-secondary-800"
+          >
+            {values.map((value) => {
+              const Icon = value.icon;
+              return (
+                <motion.div
+                  key={value.title}
+                  variants={fadeInUp}
+                  className="bg-secondary-900 p-8 group hover:bg-secondary-800/60 transition-colors"
+                >
+                  <div className="w-10 h-10 border border-primary-600/50 flex items-center justify-center mb-5 group-hover:border-primary-400 transition-colors">
+                    <Icon className="w-5 h-5 text-primary-500" />
+                  </div>
+                  <h3 className="font-serif text-lg text-white font-semibold mb-3">{value.title}</h3>
+                  <p className="text-secondary-400 text-sm leading-relaxed font-sans">{value.description}</p>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }

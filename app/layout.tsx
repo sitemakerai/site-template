@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  style: ["normal", "italic"],
+});
 
 export const metadata: Metadata = {
-  title: "Modern Business Site",
-  description: "A beautiful, modern website built with Next.js and Tailwind CSS",
+  title: "Centre Horloger — Maîtres Horlogers Suisses",
+  description:
+    "Depuis 1887, Centre Horloger perpétue l'art de l'horlogerie suisse à Genève. Vente, restauration et entretien de montres de prestige.",
 };
 
 export default function RootLayout({
@@ -17,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
       <body>
         <Header />
         <main className="min-h-screen">{children}</main>

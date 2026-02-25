@@ -182,7 +182,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="border border-primary-700/30 p-8 bg-primary-900/10">
+              <div className="border border-secondary-700/40 p-8 bg-secondary-900/50">
                 <div className="flex items-center gap-3 mb-5">
                   <Clock className="w-5 h-5 text-primary-400" />
                   <h3 className="font-serif text-lg text-white font-semibold">Horaires d&apos;ouverture</h3>

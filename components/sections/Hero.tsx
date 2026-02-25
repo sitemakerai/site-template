@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-secondary-950">
       {/* Subtle radial gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(184,134,58,0.08)_0%,_transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(200,16,46,0.10)_0%,_rgba(29,52,97,0.08)_50%,_transparent_70%)] pointer-events-none" />
 
       {/* Thin decorative lines */}
       <div className="absolute inset-0 pointer-events-none">

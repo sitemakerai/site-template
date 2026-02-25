@@ -40,9 +40,8 @@ tailwind.config.ts                  # Theme: colors, fonts, spacing
 ## Workflow
 
 1. Make the edit
-2. Run `npx tsc --noEmit` to verify
-3. Commit and push: `git add -A && git commit -m "[message]" && git push origin preview`
-4. Tell the user what you changed (brief)
+2. Commit and push: `git add -A && git commit -m "[message]" && git push origin preview`
+3. Tell the user what you changed (brief)
 
 You are always on the `preview` branch. Never push to `main` or `prod` — deployments are handled separately.
 

@@ -1,63 +1,49 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRight, Phone } from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function CTA() {
   return (
-    <section className="py-28 bg-secondary-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24">
+      <Container>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="border border-primary-700/40 p-12 md:p-20 text-center relative overflow-hidden"
+          className="bg-gradient-to-br from-primary-600 to-blue-700 rounded-3xl p-12 md:p-16 text-center"
         >
-          {/* Corner decorations */}
-          <div className="absolute top-0 left-0 w-12 h-12 border-t border-l border-primary-500/60" />
-          <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-primary-500/60" />
-          <div className="absolute bottom-0 left-0 w-12 h-12 border-b border-l border-primary-500/60" />
-          <div className="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-primary-500/60" />
-
-          <p className="text-xs uppercase tracking-[0.3em] text-primary-400 mb-6 font-sans">
-            Confier votre montre à des experts
-          </p>
-
-          <h2 className="font-serif text-4xl md:text-5xl text-white font-bold mb-6">
-            Votre garde-temps mérite
-            <br />
-            <em className="text-primary-400 not-italic">le meilleur soin</em>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Votre montre mérite le meilleur
           </h2>
-
-          <p className="text-secondary-400 max-w-xl mx-auto mb-10 leading-relaxed font-sans">
-            Prenez rendez-vous à notre atelier genevois. Nos maîtres horlogers vous accueillent
-            et évaluent votre montre gratuitement.
+          <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+            Confiez-nous votre garde-temps précieux. Devis gratuit et diagnostic complet sous 24h. Plus de 35 ans d'expertise à votre service.
           </p>
-
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link
-              href="/contact"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-primary-600 text-white text-sm uppercase tracking-widest hover:bg-primary-500 transition-colors font-sans"
+            <Button
+              size="lg"
+              variant="secondary"
+              className="group bg-white text-primary-600 hover:bg-primary-50"
             >
-              Prendre Rendez-vous
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <a
-              href="tel:+41223104567"
-              className="inline-flex items-center gap-2 px-8 py-4 border border-secondary-600 text-secondary-300 text-sm uppercase tracking-widest hover:border-primary-500 hover:text-primary-300 transition-colors font-sans"
+              Devis Gratuit
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white text-white hover:bg-white/10"
             >
-              <Phone className="w-4 h-4" />
-              +41 22 310 45 67
-            </a>
+              Nous Contacter
+            </Button>
           </div>
-
-          <p className="mt-8 text-xs text-secondary-600 font-sans tracking-wide">
-            Lun–Ven : 9h–18h30 &nbsp;·&nbsp; Sam : 10h–17h &nbsp;·&nbsp; Consultation gratuite
+          <p className="mt-8 text-sm text-primary-100">
+            Devis gratuit • Diagnostic sous 24h • Garantie 2 ans
           </p>
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 }

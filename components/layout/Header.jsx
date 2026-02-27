@@ -1,47 +1,66 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import Container from '@/components/ui/Container';
+import Button from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { text: 'News', href: '/' },
-  { text: 'Video', href: '/video' },
-  { text: 'Entdecken', href: '/discover' },
-  { text: 'Profil', href: '/register' },
+  { text: 'Accueil', href: '/' },
+  { text: 'Réparation et SAV Certifié', href: '/sous-traitance-sav-certifie' },
+  { text: 'Formation et découverte', href: '/formation' },
+  { text: 'Contact', href: '/contact' },
 ];
 
 export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-neutral-200 shadow-sm">
+    <header
+      className={cn(
+        'sticky top-0 z-50 w-full transition-all duration-300',
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-neutral-100'
+          : 'bg-white/90 backdrop-blur-sm'
+      )}
+    >
       <Container>
-        <div className="flex items-center justify-between h-14 md:h-16">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+          <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
             <span
-              className="flex items-center justify-center w-8 h-8 rounded font-bold text-white text-sm select-none"
-              style={{ backgroundColor: 'rgb(0, 0, 238)' }}
+              className="w-9 h-9 rounded-md flex items-center justify-center text-white font-bold text-lg flex-shrink-0 transition-transform group-hover:scale-105"
+              style={{ backgroundColor: 'rgb(216, 97, 60)' }}
+              aria-hidden="true"
             >
-              20
+              CH
             </span>
-            <span className="font-bold text-neutral-900 text-sm md:text-base leading-tight hidden sm:block">
-              20 Minuten
-            </span>
+            <div className="hidden sm:block">
+              <span className="font-semibold text-neutral-900 text-sm leading-tight block">
+                Centre Horloger
+              </span>
+              <span className="text-xs text-neutral-500 leading-tight block">
+                Le mouvement c&apos;est la vie
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1" aria-label="Hauptnavigation">
+          <nav className="hidden lg:flex items-center gap-1" aria-label="Navigation principale">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={cn(
-                  'px-4 py-2 rounded-md text-sm font-medium text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100 transition-colors'
-                )}
+                className="px-3 py-2 text-sm font-medium text-neutral-700 rounded-md hover:text-[rgb(216,97,60)] hover:bg-primary-50 transition-colors duration-150"
               >
                 {item.text}
               </Link>
@@ -49,50 +68,53 @@ export default function Header() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="/register"
-              className="px-4 py-2 rounded-md text-sm font-semibold text-white transition-colors hover:opacity-90"
-              style={{ backgroundColor: 'rgb(0, 0, 238)' }}
+          <div className="hidden lg:flex items-center">
+            <Button
+              variant="primary"
+              size="sm"
+              className="text-sm"
+              style={{ backgroundColor: 'rgb(216, 97, 60)', borderColor: 'rgb(216, 97, 60)' }}
+              asChild
             >
-              Anmelden
-            </Link>
+              <Link href="/contact">Prendre contact</Link>
+            </Button>
           </div>
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 rounded-md text-neutral-700 hover:bg-neutral-100 transition-colors"
-            onClick={() => setMobileOpen((prev) => !prev)}
-            aria-label={mobileOpen ? 'Menü schließen' : 'Menü öffnen'}
+            className="lg:hidden p-2 rounded-md text-neutral-700 hover:text-[rgb(216,97,60)] hover:bg-neutral-100 transition-colors"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-expanded={menuOpen}
           >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </Container>
 
       {/* Mobile Menu */}
-      {mobileOpen && (
-        <div className="md:hidden border-t border-neutral-200 bg-white">
+      {menuOpen && (
+        <div className="lg:hidden bg-white border-t border-neutral-100 shadow-lg">
           <Container>
-            <nav className="flex flex-col py-3 gap-1" aria-label="Mobile Navigation">
+            <nav className="py-4 flex flex-col gap-1" aria-label="Navigation mobile">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="px-3 py-3 rounded-md text-sm font-medium text-neutral-800 hover:bg-neutral-100 transition-colors"
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => setMenuOpen(false)}
+                  className="px-4 py-3 text-sm font-medium text-neutral-700 rounded-md hover:text-[rgb(216,97,60)] hover:bg-neutral-50 transition-colors"
                 >
                   {item.text}
                 </Link>
               ))}
-              <div className="pt-2 pb-1">
+              <div className="pt-3 pb-1">
                 <Link
-                  href="/register"
-                  className="block w-full text-center px-4 py-2 rounded-md text-sm font-semibold text-white transition-colors hover:opacity-90"
-                  style={{ backgroundColor: 'rgb(0, 0, 238)' }}
-                  onClick={() => setMobileOpen(false)}
+                  href="/contact"
+                  onClick={() => setMenuOpen(false)}
+                  className="block w-full text-center px-4 py-3 rounded-md text-sm font-semibold text-white transition-colors"
+                  style={{ backgroundColor: 'rgb(216, 97, 60)' }}
                 >
-                  Anmelden
+                  Prendre contact
                 </Link>
               </div>
             </nav>
